@@ -185,7 +185,6 @@ def get_last(channels=None, ca_host=None):
     mdsapi = sources.metadataStore.api.analysis
     bre = mdsapi.find_last()
     events = mdsapi.find_event(bre)
-    print(events[0])
     # remove the foot cannons from the mongoengine objects
     bre = BrokerStruct(bre)
     events = [BrokerStruct(ev) for ev in events]

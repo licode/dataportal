@@ -234,7 +234,11 @@ class DataMuggler(object):
         for name, data_dict in event.data.items():
             # Both scalar and nonscalar data will get stored in the DataFrame.
             # This may be optimized later, but it might not actually help much.
-            self._data.append({name: event.data[name]['value']})
+            # print('name', name)
+            # print('data_dct', data_dict)
+            dct = {name: event.data[name]['value']}
+            # print('append_event dct', dct)
+            self._data.append(dct)
             self._timestamps.append({name: event.data[name]['timestamp']})
             self._time.append(event.time)
         return True
@@ -546,7 +550,7 @@ class DataMuggler(object):
             return self[attr]
         else:
             raise AttributeError("DataMuggler has no attribute {0} and no "
-                                 "data source named '{0}'".format(attr))
+                                  "data source named '{0}'".format(attr))
 
     @property
     def ncols(self):
